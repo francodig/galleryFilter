@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section>
+        <ul>
+            <li class="list active" data-filter="all">All</li>
+            <li class="list" data-filter="mobile">Mobile</li>
+            <li class="list" data-filter="watch">Watch</li>
+            <li class="list" data-filter="laptop">Laptop</li>
+            <li class="list" data-filter="tv">TV</li>
+            <li class="list" data-filter="tablet">Tablet</li>
+        </ul>
+        <div class="product">
+            <div class="itemBox" data-item="laptop"><img src="./Assets/laptop.jpeg" alt=""></div>
+            <div class="itemBox" data-item="mobile"><img src="./Assets/mobile.jpeg" alt=""></div>
+            <div class="itemBox" data-item="tablet"><img src="./Assets/tablet.jpg" alt=""></div>
+            <div class="itemBox" data-item="tv"><img src="./Assets/tv.jpeg" alt=""></div>
+            <div class="itemBox" data-item="mobile"><img src="./Assets/mobile2.jpg" alt=""></div>
+            <div class="itemBox" data-item="watch"><img src="./Assets/smart watch.jpeg" alt=""></div>
+            <div class="itemBox" data-item="laptop"><img src="./Assets/laptop2.jpeg" alt=""></div>
+            <div class="itemBox" data-item="tv"><img src="./Assets/tv2.jpeg" alt=""></div>
+            <div class="itemBox" data-item="mobile"><img src="./Assets/mobile3.webp" alt=""></div>
+            <div class="itemBox" data-item="watch"><img src="./Assets/smart watch2.jpeg" alt=""></div>
+            <div class="itemBox" data-item="laptop"><img src="./Assets/laptop3.jpeg" alt=""></div>
+            <div class="itemBox" data-item="watch"><img src="./Assets/smart watch3.jpeg" alt=""></div>
+            <div class="itemBox" data-item="tablet"><img src="./Assets/tablet2.jpg" alt=""></div>
+            <div class="itemBox" data-item="laptop"><img src="./Assets/laptop4.jpeg" alt=""></div>
+        </div>
+    </section>
+
+    <script>
+        let list = document.querySelectorAll('.list');
+        let itemBox = document.querySelectorAll('.itemBox');
+
+        for(let i=0; i<list.length; i+=1){
+            list[i].addEventListener('click',function(){
+                for(let j=0;j<list.length; j+=1){
+                    list[j].classList.remove('active');
+                }
+                this.classList.add('active');
+
+                let dataFilter = this.getAttribute('data-filter');
+                for(let k=0; k<itemBox.length; k+=1){
+                    itemBox[k].classList.remove('active');
+                    itemBox[k].classList.add('hide');
+
+
+                    if(itemBox[k].getAttribute('data-item')== dataFilter || dataFilter== "all"){
+                        itemBox[k].classList.remove('hide');
+                        itemBox[k].classList.add('active');
+
+                    }
+                }
+
+            })
+        }
+    </script>
+</body>
+</html>
